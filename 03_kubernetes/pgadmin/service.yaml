@@ -14,7 +14,7 @@ spec:
     protocol: TCP
     targetPort: 80
   selector:
-    app: pgadmin-svc
+    app: pgadmin
   type: LoadBalancer
 status:
   loadBalancer: {}

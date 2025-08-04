@@ -27,7 +27,7 @@ spec:
         resources: {}
         ports:
         - containerPort: 80
-        volumesMounts:
+        volumeMounts:
         - mountPath: /pgadmin4/servers.json
           name: servers-json
           subPath: servers.json
