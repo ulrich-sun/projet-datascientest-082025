@@ -1,12 +1,8 @@
-
-
-
-
 module "security_group" {
   source                     = "../../modules/security_group"
   security_group_name        = "my-security-group"
   security_group_description = "Security group for EC2 instances"
-  security_group_ports       = [22, 80, 443]
+  security_group_ports       = var.security_group_ports
   instance_name              = "${local.instance_name}-sg"
   environment                = local.environment
   project_name               = local.project_name
@@ -22,7 +18,9 @@ module "ec2" {
   instance_name     = local.instance_name
   environment       = local.environment
   project_name      = local.project_name
+  script_name       = var.script_name
 }
+
 
 
 module "ebs" {
@@ -32,7 +30,7 @@ module "ebs" {
   project_name      = local.project_name
   volume_size       = 40
   availability_zone = module.ec2.availability_zone
-  instance_id       = module.ec2.instance_id
+ instance_id       = module.ec2.instance_id
 }
 
 

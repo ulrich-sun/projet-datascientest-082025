@@ -5,3 +5,4 @@ locals {
   key_name      = "ds-keypair"
   region        = "us-east-1"
 }
+

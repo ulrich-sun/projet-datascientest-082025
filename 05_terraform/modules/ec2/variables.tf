@@ -41,3 +41,10 @@ variable project_name {
   default     = "my-project"
   description = "Project tag for the EC2 instance"
 }
+
+
+variable script_name {
+  type        = string
+  default     = "my-terraform-stack"
+  description = "Name of the Terraform stack"
+}
