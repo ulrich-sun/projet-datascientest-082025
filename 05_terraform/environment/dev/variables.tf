@@ -24,3 +24,9 @@ variable "script_name" {
     error_message = "la script_name doit être soit 'k3s' soit 'docker'."
   }
 }
+
+variable "stack_name" {
+  type        = string
+  default     = "Ulrich"
+  description = "Name of the stack to deploy (k3s or docker)"
+}
