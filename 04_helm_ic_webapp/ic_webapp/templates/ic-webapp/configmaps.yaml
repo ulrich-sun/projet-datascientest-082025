@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ic-webapp-cm
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.ic_webapp_labels.app }}
+    env: {{ .Values.ic_webapp_labels.env }} 
+data:
+  ODOO_URL: {{ .Values.ic_webapp.odoo_url }}
+  PGADMIN_URL: {{ .Values.ic_webapp.pgadmin_url }}

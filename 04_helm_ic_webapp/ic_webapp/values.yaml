@@ -1,0 +1,9 @@
+namespace: ic-group 
+
+ic_webapp_labels:
+  app: ic-webapp
+  env: prod
+
+ic_webapp:
+  odoo_url: http://34.238.125.60:8069
+  pgadmin_url: http://34.238.125.60:5050
