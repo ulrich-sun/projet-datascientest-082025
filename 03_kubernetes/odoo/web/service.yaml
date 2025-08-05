@@ -4,7 +4,9 @@ metadata:
   creationTimestamp: null
   labels:
     app: odoo-web-svc
+    env: prod
   name: odoo-web-svc
+  namespace: ic-group
 spec:
   ports:
   - name: 8069-8069

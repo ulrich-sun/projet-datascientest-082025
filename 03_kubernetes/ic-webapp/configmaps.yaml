@@ -6,5 +6,5 @@ metadata:
   labels:
     env: prod 
 data:
-  ODOO_URL: "https://www.odoo.com/"
-  PGADMIN_URL: "https://www.pgadmin.org/"
+  ODOO_URL: "http://34.238.125.60:8069/"
+  PGADMIN_URL: "http://34.238.125.60:5050/"

@@ -6,4 +6,4 @@ metadata:
   labels:
     env: prod 
 data:
-  HOST: odoo-db
+  HOST: odoo-db-svc
