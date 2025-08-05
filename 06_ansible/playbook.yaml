@@ -1,0 +1,17 @@
+- name: Deploy ic_webapp project 
+  hosts: Fabrice-2
+  become: true
+  vars:
+    network: "ic-webapp-network"
+  pre_tasks:
+    - name: Create Docker network
+      docker_network:
+        name: "{{ network }}"
+        driver: bridge
+        state: present
+
+  # Puis appel des rôles après que le réseau ait été créé
+  roles:
+    - odoo_role
+    - pgadmin_role
+    - ic_webapp_role

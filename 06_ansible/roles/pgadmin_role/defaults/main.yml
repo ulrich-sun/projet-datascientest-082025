@@ -1,0 +1,9 @@
+---
+# defaults file for pgadmin_role
+pgadmin_image: dpage/pgadmin4:latest
+pgadmin_container_name: pgadmin4
+pgadmin_default_email: toto@toto.com 
+pgadmin_default_password: SuperSecret
+pgadmin_server_port: 5050
+network : "ic-network"
+

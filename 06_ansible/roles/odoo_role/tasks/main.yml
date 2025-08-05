@@ -1,0 +1,12 @@
+
+# tasks file for odoo_role
+- name: generate compose file for odoo
+  template:
+    src: docker-compose.odoo.yaml.j2
+    dest: /home/ubuntu/docker-compose.odoo.yaml
+
+
+- name: start compose file for odoo
+  command: docker compose -f /home/ubuntu/docker-compose.odoo.yaml up -d
+  args:
+    chdir: /home/ubuntu

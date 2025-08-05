@@ -1,0 +1,12 @@
+---
+# tasks file for icwebapp_role
+- name: generate compose file for icwebapp
+  template:
+    src: docker-compose.icwebapp.yaml.j2
+    dest: /home/ubuntu/docker-compose.icwebapp.yaml
+
+
+- name: start compose file for icwebapp
+  command: docker compose -f /home/ubuntu/docker-compose.icwebapp.yaml up -d
+  args:
+    chdir: /home/ubuntu

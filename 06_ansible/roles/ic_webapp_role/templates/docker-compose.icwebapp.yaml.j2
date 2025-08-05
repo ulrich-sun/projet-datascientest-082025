@@ -1,0 +1,16 @@
+services:
+  ic-webapp:
+    container_name: {{ service_name_ic_webapp }}
+    image: {{ image_name_ic_webapp }}
+    ports:
+      - "{{ server_port_ic_webapp }}:8080"
+    environment:
+      - ODOO_URL={{ odoo_url }}
+      - PGADMIN_URL={{ pgadmin_url }}
+    networks:
+      - {{ network }}
+
+networks:
+  {{ network }}:
+    driver: bridge 
+    name: {{ network }}

@@ -1,0 +1,6 @@
+all:
+  children:
+    projet-datascientest-082025:
+      hosts:
+        Ulrich-1:        
+        Fabrice-2:    
