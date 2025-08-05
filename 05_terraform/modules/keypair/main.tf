@@ -14,7 +14,6 @@ resource "aws_key_pair" "this" {
 
 resource "local_file" "this" {
   content  = tls_private_key.this.private_key_pem
-  sensitive = true
   filename = var.private_key_path
   file_permission = "0400"
 }

@@ -5,6 +5,6 @@ variable key_name {
 }
 variable private_key_path {
   type        = string
-  default     = "${path.module}/deployer-key.pem"
+  default     = ""
   description = "Path to save the private key file"
 }
