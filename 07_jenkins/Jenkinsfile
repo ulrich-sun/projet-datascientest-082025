@@ -1,0 +1,51 @@
+pipeline {
+    agent 
+    environment{
+        DOCKER_PASSWORD = credentials('dockerhub_password')
+        DOCKER_USERNAME = credentials('dockerhub_username')
+        DOCKER_DIRECTORY = '../01_docker' 
+        DOCKERFILE = 'Dockerfile'
+        IMAGE_NAME = 'ic_webapp'
+        IMAGE_TAG = 'latest'
+        HOST_PORT = '8080'
+        CONTAINER_PORT = '8080'
+        HOST_IP = 34.238.125.60
+    }
+    stages {
+        stage("Build Image"){
+            steps {
+                script {
+                    sh """
+                       docker build  --no-cache -t $DOCKER_USERNAME/$IMAGE_NAME:$IMAGE_TAG  -f $DOCKER_DIRECTORY $DOCKER_DIRECTORY/.
+                    """
+                }
+            }
+        }
+        stage("Run and Test"){
+            steps {
+                script {
+                    sh """
+                       docker ps -a | grep -i $IMAGE_NAME && docker rm  -f $IMAGE_NAME || true
+                       sleep 5
+                       docker run --rm -d -p $HOST_PORT:$CONTAINER_PORT --name $IMAGE_NAME $DOCKER_USERNAME/$IMAGE_NAME:$IMAGE_TAG
+                       sleep 5
+                       curl -I http://$HOST_IP:$HOST_PORT | grep -i "200 OK" || (echo "Application is not running" && exit 1)
+                       sleep 2
+                       docker stop $IMAGE_NAME || true
+                    """
+                }
+            }
+        }
+        stage("Push Image"){
+            steps {
+                script {
+                    sh """
+                       echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+                       docker push $DOCKER_USERNAME/$IMAGE_NAME:$IMAGE_TAG
+                    """
+                }
+            }
+        }
+    }
+
+}
