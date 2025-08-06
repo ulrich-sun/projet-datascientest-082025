@@ -1,2 +1,2 @@
-srcipt_name = "docker"
+script_name = "docker"
 stack_name = "ulrich"
